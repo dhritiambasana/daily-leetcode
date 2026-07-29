@@ -1,11 +1,17 @@
-class Solution {
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution
+{
 public:
-    int missingNumber(vector<int>& nums) {
+    int missingNumber(vector<int> &nums)
+    {
         int ideal_sum = 0;
         int vector_sum = 0;
         int k = 0;
 
-        while (k <= nums.size()){
+        while (k <= nums.size())
+        {
             ideal_sum += k;
             k++;
         }

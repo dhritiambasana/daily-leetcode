@@ -1,7 +1,5 @@
 # 268. Missing Number
 
-## Approach
-
 **Idea:**  
 The array contains numbers from `0` to `n` with one number missing.
 

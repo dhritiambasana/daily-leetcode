@@ -1,25 +1,36 @@
-# 860. Lemonade Change
+# 605. Can Place Flowers
 
 **Idea:**
 
-Each lemonade costs $5, so we need to give:
+We count how many flowers can be placed (c) without putting two flowers next to each other.
 
-1. $5 bill → no change.
-2. $10 bill → give one $5 as change.
-3. $20 bill → give $10 + $5 or three $5s.
+**Approach:**
 
-We only need to track the number of $5 and $10 bills:
+First, handle the special case where the flowerbed has only **one element**:
 
-So:
 ```cpp
-int b_5 = 0;
-int b_10 = 0;
+if (f.size() == 1) {
+    if (f[0] == 0)
+        return (n <= 1);
+}
 ```
 
-For $20, prefer $10 + $5 because $5 bills are more useful for future customers.
+For the first element, check only the next element:
+```cpp
+if (f[0] == 0 && f[1] == 0)
+```
 
-If we cannot give the required change, return *false*.
-Otherwise, after processing all bills, return *true*.
+For the last element, check only the previous element:
+```cpp
+if (f[f.size() - 1] == 0 &&
+    f[f.size() - 2] == 0)
+```
+
+For the middle elements, we need to check both neighbors. Therefore, the loop is executed only when the size is greater than 2.
+
+The loop checks three consecutive positions. If all three are empty, the middle position can safely contain a flower.
+
+Finally, if the number of flowers placed is at least n, return true:
 
 Time Complexity: **O(n)**
 Space Complexity: **O(1)**
